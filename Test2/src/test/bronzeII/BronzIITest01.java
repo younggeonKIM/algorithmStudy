@@ -1,6 +1,7 @@
 package test.bronzeII;
 
 import java.util.Scanner;
+
 // 1009번
 public class BronzIITest01 {
 	/*
