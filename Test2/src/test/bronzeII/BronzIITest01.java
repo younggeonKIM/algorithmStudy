@@ -1,7 +1,7 @@
 package test.bronzeII;
 
 import java.util.Scanner;
-
+// 1009번
 public class BronzIITest01 {
 	/*
 		재용이는 최신 컴퓨터 10대를 가지고 있다. 어느 날 재용이는 많은 데이터를 처리해야 될 일이 생겨서 각 컴퓨터에 1번부터 10번까지의 번호를 부여하고, 
