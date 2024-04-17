@@ -21,14 +21,14 @@ public class Chromosome {
 	첫째 줄에 테스트 케이스의 개수 T ≤ 20 이 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있으며, 최대 200개의 알파벳 대문자로 이루어진 문자열이 주어진다.
 	
 	출력
-	각 테스트 케이스에 대해서, 문제의 규칙을 지키는 문자열인 경우에는  "Infected!"를, 아닌 경우에는 "Good"을 출력한다.*/
+	각 테스트 케이스에 대해서, 문제의 규칙을 지키는 문자열인 경우에는 "Infected!"를, 아닌 경우에는 "Good"을 출력한다.*/
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
 		int T;
-		String key, value;
+		String key="", value;
 		LinkedHashMap<String, String> map = new LinkedHashMap<>();
-		Pattern p = Pattern.compile("^(.*[ABCDEF])(.+[A])(.+[F])(.+[C])(.*[ABCDEF])$");
+		Pattern p = Pattern.compile("^([ABCDEF]?)([A]+)([F]+)([C]+)([ABCDEF]?)$");
 		try {
 			
 			T = sc.nextInt();
@@ -39,11 +39,9 @@ public class Chromosome {
 			}
 			for(int i = 0 ; i < T ; i++) {
 				
-
-				key = sc.nextLine();
+				key=sc.next();
 				
 				if(key.length() > 200) {
-					
 					
 					throw new Exception("Not suitable Chromosome test case.");
 				}
