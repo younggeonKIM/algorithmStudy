@@ -1,7 +1,11 @@
 package regExp;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // 22859
@@ -78,17 +82,21 @@ public class HTMLParsing {
 	출력
 	HTML 문서를 파싱한 결과를 출력한다.*/
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String inputHTML, titleName, outputParsedHTML;
-		boolean isMainOpened, isTitleName, isTitleOpened, isParagraphOpened;
+		/*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		String inputHTML="", titleName;
+		StringBuilder sb = new StringBuilder();
+		
+		boolean isMainOpened=false, isTitleName=false, isTitleOpened=false, isParagraphOpened;
+		
 		
 		Pattern mainOpenPattern = Pattern.compile("^(<)?(main)?(>)?$");
 		Pattern mainClosePattern = Pattern.compile("^(<)?(/)?(main)?(>)?$");
 		
-		Pattern divTitleOpenPattern = Pattern.compile("^(<)?(div )?(title=\")?$");
-		Pattern divTitleClosePattern = Pattern.compile("^(\")?(>)?$");
+		Pattern divTitleOpenPattern = Pattern.compile("^(<)?(div )?(title=\")?([a-zA-Z]+|[_]+)([a-zA-Z]*|[_]*|[ ]*)([a-zA-Z]+|[_]+)(\")?(>)?$");
+		
 		
 		Pattern divClosePattern = Pattern.compile("^(<)?(/)?(div)?(>)?$");
 		
@@ -98,10 +106,51 @@ public class HTMLParsing {
 		Pattern tagNamePattern = Pattern.compile("^([a-z]|[ ])?$");
 		Pattern titleNamePattern = Pattern.compile("^([a-zA-Z]+|[_]+)([a-zA-Z]*|[_]*|[ ]*)([a-zA-Z]+|[_]+)$");
 		
+		Matcher main = mainOpenPattern.matcher(inputHTML);
+		Matcher div = divTitleOpenPattern.matcher(inputHTML);
+		
+		
+		
 		try {
 			
-			inputHTML = br.readLine();
+			if(main.find()) {
+				
+				isMainOpened = true;
+				inputHTML = inputHTML.replaceFirst(mainOpenPattern.pattern(), "");
+			}
+			while(isMainOpened) {
+				
+				if(div.find()) {
+					
+					isTitleOpened = true;
+					titleName = 
+					inputHTML = inputHTML.replaceFirst(divTitleOpenPattern.pattern(), "");
+					
+				}
+				while(isTitleOpened) {
+					
+					
+					sb.append("title : "+arr.)
+				}
+			}
 			
+		}catch(Exception e) {
+			
+		}
+		*/
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		String str = br.readLine();
+		
+		Matcher m1 = Pattern.compile("<div title=\"(\\w|_|\\s)*\"").matcher(str);
+		Matcher m2 = Pattern.compile("<p>(\\w|\\s|</?[^p]>|</?\\w{2, }\\s?>|\\.)*</p>").matcher(str);
+		
+		Map<Integer, String> map = new HashMap<>();
+		
+		while(m1.find()) {
+			
+			map.put(m1.start(), "title: "+m1.group().split("\""))[1]+"\n");
 		}
 		
 	}
