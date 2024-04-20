@@ -3,7 +3,10 @@ package regExp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -144,15 +147,30 @@ public class HTMLParsing {
 		String str = br.readLine();
 		
 		Matcher m1 = Pattern.compile("<div title=\"(\\w|_|\\s)*\"").matcher(str);
-		Matcher m2 = Pattern.compile("<p>(\\w|\\s|</?[^p]>|</?\\w{2, }\\s?>|\\.)*</p>").matcher(str);
+		Matcher m2 = Pattern.compile("[<p>(\\w|\\s|</?[^p]>|</?\\w{2, }\\s?>|\\.)*</p>]").matcher(str);
 		
 		Map<Integer, String> map = new HashMap<>();
 		
 		while(m1.find()) {
 			
-			map.put(m1.start(), "title: "+m1.group().split("\""))[1]+"\n");
+			map.put(m1.start(), "title: "+m1.group().split("\"")[1]+"\n");
+		
+			while(m2.find()) {
+			
+				String p = m2.group().replaceAll("<[\\w\\s/]*>","");
+				map.put(m2.start(), p.replaceAll("[\\s{2, }]", " ") + "\n");
+			}
 		}
 		
+		List<Integer> list = new ArrayList<>(map.keySet());
+		Collections.sort(list);
+		
+		for(int i : list) {
+			
+			sb.append(map.get(i));
+		}
+		
+		System.out.println(sb);
 	}
 
 }
