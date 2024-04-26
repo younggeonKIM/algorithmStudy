@@ -5,7 +5,7 @@ public class InsertionSorting {
 	public static void main(String[] args) {
 		
 		int [] arr = new int[30];
-		int j, k, temp;
+		int j, k;
 		for(int i = 0 ; i < arr.length ; i++) {
 			
 			arr[i] = (int)(Math.random()*100);
