@@ -72,6 +72,14 @@ public class MergeSorting {
 			
 			arr[i]=(int)(Math.random()*100);
 		}
+		System.out.println("분할 전 2차원 배열 : ");
+		
+			
+		for(int arrVal : arr) {
+			
+			System.out.print(arrVal+" ");
+		}
+		System.out.println();
 		
 		
 		
