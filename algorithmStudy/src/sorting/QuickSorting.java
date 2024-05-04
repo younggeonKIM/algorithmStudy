@@ -47,12 +47,15 @@ public class QuickSorting {
 			
 			arr[i] = (int)(Math.random()*100);
 		}
+		
 		System.out.println("정렬 전 데이터 배열 : ");
 		for(int i = 0; i < arrLeng; i++) {
 			
 			System.out.print(arr[i]+" ");
 		}
+		
 		quickSort(arr, 0, arrLeng-1);
+		
 		System.out.println();
 		System.out.println("정렬 전 데이터 배열 : ");
 		for(int i = 0; i < arrLeng; i++) {
