@@ -1,10 +1,8 @@
 package searching;
 
-import java.util.Scanner;
-
 public class StringSearching {
 	
-	public int stringSearch(String basicStr, String targetStr) {
+	public static int stringSearch(String basicStr, String targetStr) {
 		
 		int discoveredIdx = 0;
 		while(discoveredIdx + targetStr.length() < basicStr.length()) {
@@ -42,22 +40,11 @@ public class StringSearching {
 	
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
+		String basicStr = new String("askdjfappleajdsoifnv");
+		String targetStr = new String("apple");
 		
 		
-		String basicStr = sc.nextLine();
-		String targetStr = sc.nextLine();
-		
-		StringSearching ss = new StringSearching();
-		int discoveredIdx = ss.stringSearch(basicStr, targetStr);
-		
-		System.out.print("검색 대상 문자열 검색된 위치 : ");
-		if(discoveredIdx == -1) {
-			
-			System.out.print("검색되지 않았습니다. ");
-		} else {
-			
-			System.out.print(discoveredIdx);
-		}
+		int discoveredIdx = stringSearch(basicStr, targetStr);
+		System.out.print(discoveredIdx);
 	}
 }
